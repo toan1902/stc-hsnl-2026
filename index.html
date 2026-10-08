@@ -1,0 +1,598 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>STC – Hồ sơ năng lực</title>
+<meta name="description" content="STC – đối tác công nghệ cho công trình cao cấp: nhà thông minh, an toàn điện, cổng tự động và hạ tầng viễn thông.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme:light;
+  --bg:#f7f9fc; --surface:#ffffff; --ink:#0e1b33; --muted:#5a6680; --line:#e1e7f1; --tint:#eef3fb;
+  --brand:#0a3da8; --brand-deep:#071d55; --brand-2:#1a5fd6; --accent:#f26b1d; --accent-soft:#ffb27a;
+  --serif:"Playfair Display",Georgia,serif; --sans:"Be Vietnam Pro",system-ui,sans-serif;
+  --shadow:0 18px 44px rgba(10,61,168,.08);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:400;line-height:1.7;font-size:16px;overflow-x:hidden}
+img,video{max-width:100%;display:block}
+a{color:inherit}
+.wrap{max-width:1180px;margin:0 auto;padding:0 16px}
+h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.2;letter-spacing:-.005em;color:var(--brand-deep)}
+h2{font-size:clamp(1.8rem,4vw,2.7rem);margin-bottom:.8rem}
+h3{font-size:1.3rem}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;text-transform:uppercase;letter-spacing:.22em;font-size:.72rem;font-weight:600;color:var(--accent);margin-bottom:14px}
+.eyebrow::before{content:"";width:28px;height:1px;background:currentColor}
+.lead{color:var(--muted);max-width:680px;font-size:1.05rem}
+section{padding:96px 0}
+.night{background:var(--tint)}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:linear-gradient(90deg,var(--brand) 0%,var(--brand-2) 70%,var(--accent) 100%)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:66px;gap:12px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand img{height:38px;width:auto;border-radius:6px}
+.brand span{font-size:.76rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.nav ul{display:flex;gap:26px;list-style:none;font-size:.88rem}
+.nav ul a{text-decoration:none;color:var(--muted)}
+.nav ul a:hover{color:var(--brand)}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 26px;border-radius:2px;font-weight:600;text-decoration:none;font-size:.92rem;letter-spacing:.04em;transition:all .2s;border:1px solid transparent;cursor:pointer;font-family:inherit;background:transparent}
+.btn-primary{background:var(--brand);color:#fff;box-shadow:0 10px 24px rgba(10,61,168,.22)}
+.btn-primary:hover{background:var(--brand-deep)}
+.btn-line{border-color:var(--brand);color:var(--brand)}
+.btn-line:hover{border-color:var(--accent);color:var(--accent)}
+.btn-accent{background:var(--accent);color:#fff;box-shadow:0 10px 24px rgba(242,107,29,.28)}
+.btn-accent:hover{background:#d9580e}
+.btn-sm{padding:9px 16px;font-size:.82rem}
+
+/* hero */
+.hero{position:relative;min-height:86vh;display:flex;align-items:flex-end;background:var(--surface);overflow:hidden}
+.hero > img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,255,255,.98) 0%,rgba(255,255,255,.92) 42%,rgba(255,255,255,.35) 72%,rgba(255,255,255,.05) 100%)}
+.hero .wrap{position:relative;z-index:1;padding-top:110px;padding-bottom:72px;width:100%}
+.hero h1{font-size:clamp(2.3rem,5.6vw,4.2rem);max-width:760px;margin-bottom:22px}
+.hero h1 em{font-style:italic;color:var(--brand-2);background:linear-gradient(transparent 88%,rgba(242,107,29,.55) 88%)}
+.hero p{max-width:580px;color:var(--muted);font-size:1.06rem;margin-bottom:34px}
+.cta{display:flex;flex-wrap:wrap;gap:14px}
+.partners{margin-top:56px;padding-top:22px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:12px 34px;align-items:center;font-size:.82rem;color:var(--muted);letter-spacing:.06em;max-width:760px}
+.partners b{color:var(--brand);font-weight:600;letter-spacing:.12em;text-transform:uppercase;font-size:.78rem}
+
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.stat{padding:34px 20px;text-align:center;border-right:1px solid var(--line)}
+.stat:last-child{border-right:0}
+.stat b{display:block;font-family:var(--serif);font-size:clamp(2rem,4vw,2.8rem);font-weight:600;color:var(--brand);line-height:1.1}
+.stat b::after{content:"";display:block;width:24px;height:2px;background:var(--accent);margin:10px auto 6px}
+.stat span{font-size:.86rem;color:var(--muted)}
+
+/* pillars */
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
+.pillar{background:var(--surface);border:1px solid var(--line);display:flex;flex-direction:column;box-shadow:var(--shadow)}
+.pillar img{aspect-ratio:4/3;object-fit:cover;width:100%}
+.pillar div{padding:26px 26px 30px}
+.pillar .no{font-family:var(--serif);font-style:italic;color:var(--accent);font-size:1.1rem}
+.pillar h3{margin:4px 0 10px}
+.pillar p{color:var(--muted);font-size:.94rem}
+.pillar ul{margin-top:14px;list-style:none;font-size:.9rem}
+.pillar li{padding:7px 0;border-top:1px solid var(--line)}
+.pillar li::before{content:"—";color:var(--accent);margin-right:8px}
+
+/* why tech */
+.compare{display:grid;grid-template-columns:1fr 1fr;margin-top:48px;border:1px solid var(--line);box-shadow:var(--shadow)}
+.compare > div{padding:30px}
+.compare .late{background:var(--surface)}
+.compare .early{background:linear-gradient(160deg,var(--brand-deep) 0%,var(--brand) 100%);color:#fff}
+.compare h3{font-size:1.15rem;margin-bottom:18px}
+.compare .late h3{color:var(--muted)}
+.compare .early h3{color:#fff}
+.compare li{list-style:none;padding:12px 0;border-top:1px solid var(--line);font-size:.95rem;display:flex;gap:12px}
+.compare .early li{border-color:rgba(255,255,255,.16)}
+.compare li i{font-style:normal;flex:none;width:22px;color:var(--accent-soft)}
+.compare .late li i{color:#a3adc0}
+.compare .late li{color:var(--muted)}
+
+.aud{margin-top:72px}
+.tabs{display:flex;flex-wrap:wrap;border-bottom:1px solid var(--line)}
+.tabs button{font:inherit;font-size:.95rem;font-weight:500;background:none;border:0;border-bottom:2px solid transparent;color:var(--muted);padding:14px 22px;cursor:pointer;margin-bottom:-1px}
+.tabs button[aria-selected="true"]{color:var(--brand);border-color:var(--accent)}
+.panel{display:none;grid-template-columns:repeat(3,1fr);gap:28px;padding-top:34px}
+.panel.on{display:grid}
+.panel div b{display:block;font-family:var(--serif);font-size:1.18rem;font-weight:600;margin-bottom:8px;color:var(--brand-deep)}
+.panel div p{color:var(--muted);font-size:.94rem}
+.panel div::before{content:"";display:block;width:36px;height:2px;background:var(--accent);margin-bottom:16px}
+
+/* products */
+.prod{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:48px;box-shadow:var(--shadow)}
+.card{background:var(--surface);padding:30px 28px;display:flex;flex-direction:column;gap:10px;transition:background .2s}
+.card:hover{background:var(--tint)}
+.card svg{width:30px;height:30px;stroke:var(--brand);fill:none;stroke-width:1.4}
+.card h3{font-size:1.15rem}
+.card p{color:var(--muted);font-size:.92rem}
+.card small{margin-top:auto;padding-top:8px;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:600}
+
+/* feature split */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.split img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.split .stack{position:relative}
+.split .stack img.small{position:absolute;width:42%;right:-18px;bottom:-30px;border:6px solid var(--bg);aspect-ratio:1;box-shadow:var(--shadow)}
+.ticks{list-style:none;margin-top:22px}
+.ticks li{padding:11px 0;border-top:1px solid var(--line);font-size:.95rem;display:flex;gap:12px}
+.ticks li::before{content:"✦";color:var(--accent);font-size:.8rem;padding-top:3px}
+
+/* segments */
+.seg{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:48px}
+.seg article{border-top:2px solid var(--brand);padding-top:22px}
+.seg h3{font-size:1.2rem;margin-bottom:8px}
+.seg p{color:var(--muted);font-size:.92rem;margin-bottom:12px}
+.seg ul{list-style:none;font-size:.88rem}
+.seg li{padding:5px 0}
+.seg li::before{content:"·";color:var(--accent);font-weight:700;margin-right:8px}
+
+/* partnership */
+.models{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
+.model{border:1px solid var(--line);border-top:3px solid var(--brand);padding:34px 30px;background:var(--surface);box-shadow:var(--shadow)}
+.model .tag{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-weight:600}
+.model h3{margin:10px 0 14px;font-size:1.4rem}
+.model p{color:var(--muted);font-size:.93rem;margin-bottom:16px}
+.model li{list-style:none;padding:9px 0;border-top:1px solid var(--line);font-size:.92rem}
+.model li::before{content:"→";color:var(--accent);margin-right:10px}
+
+/* process */
+.steps{display:grid;grid-template-columns:repeat(6,1fr);margin-top:52px;counter-reset:s}
+.step{padding:0 18px 0 0;position:relative}
+.step::before{counter-increment:s;content:"0" counter(s);font-family:var(--serif);font-size:2.2rem;color:var(--brand);display:block;line-height:1}
+.step::after{content:"";position:absolute;top:18px;left:62px;right:12px;height:1px;background:linear-gradient(90deg,var(--accent),var(--line))}
+.step:last-child::after{display:none}
+.step b{display:block;margin:14px 0 6px;font-size:1rem;color:var(--brand-deep)}
+.step p{color:var(--muted);font-size:.86rem;line-height:1.55}
+
+/* gallery */
+.vids{display:grid;grid-template-columns:1.6fr 1fr;gap:20px;margin-top:44px;align-items:start}
+.vids figure{background:#000}
+.vids video{width:100%;height:auto;object-fit:cover;aspect-ratio:16/9}
+.vids figure:last-child video{aspect-ratio:auto;max-height:520px}
+.vids figcaption{font-size:.82rem;color:var(--muted);padding:10px 0;background:var(--bg)}
+.gal{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:20px}
+.gal img{width:100%;aspect-ratio:1;object-fit:cover}
+
+/* contact */
+.contact{text-align:center;background:linear-gradient(135deg,var(--brand-deep) 0%,var(--brand) 100%);color:#fff;position:relative}
+.contact::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:var(--accent)}
+.contact h2{color:#fff;font-size:clamp(2rem,5vw,3.3rem);max-width:820px;margin:0 auto 18px}
+.contact .eyebrow{color:var(--accent-soft)}
+.contact .lead{color:#c9d6f5;margin:0 auto 36px}
+.contact .cta{justify-content:center}
+.contact .btn-line{border-color:rgba(255,255,255,.6);color:#fff}
+.contact .btn-line:hover{border-color:var(--accent-soft);color:var(--accent-soft)}
+.cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.18);margin-top:56px;border:1px solid rgba(255,255,255,.18);text-align:left}
+.cards3 div{background:#0a2a78;padding:26px}
+.cards3 small{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent-soft)}
+.cards3 p{margin-top:6px;font-size:1.02rem}
+.cards3 a{text-decoration:none}
+footer{background:var(--brand-deep);color:#9fb0d6;font-size:.8rem;padding:24px 0;border-top:1px solid rgba(255,255,255,.1)}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+/* bedroom lighting */
+.light-grid{display:grid;grid-template-columns:1.45fr 1fr;gap:48px;align-items:center;margin-top:44px}
+.light-media{position:relative;background:#000;box-shadow:0 28px 60px rgba(7,29,85,.22)}
+.light-media::before{content:"";position:absolute;left:-14px;top:-14px;width:90px;height:90px;border-left:2px solid var(--accent);border-top:2px solid var(--accent)}
+.light-media video{width:100%;aspect-ratio:16/9;object-fit:cover}
+.light-media figcaption{position:absolute;left:0;bottom:-30px;font-size:.78rem;color:var(--muted)}
+.scenes{list-style:none;margin-top:18px}
+.scenes li{display:grid;grid-template-columns:44px 1fr;gap:4px 14px;padding:14px 0;border-top:1px solid var(--line)}
+.scenes li span{grid-row:span 2;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-family:var(--serif);font-size:1.05rem;color:#fff}
+.scenes li b{font-size:.98rem;color:var(--brand-deep)}
+.scenes li small{font-size:.86rem;color:var(--muted);line-height:1.5}
+.s1{background:#2a1a10}.s2{background:#7a4a22}.s3{background:#c2802f}.s4{background:var(--accent)}
+
+/* ===== Luxe refinement: crisp, high-contrast sections ===== */
+:root{--ink:#0a1530;--muted:#47536e;--line:#d6deeb;--navy:#08132e;--navy-2:#0c1d47;--hair:rgba(255,255,255,.12);--shadow:none}
+h2{letter-spacing:-.015em}
+h2::after{content:"";display:block;width:56px;height:2px;background:var(--accent);margin-top:18px}
+.contact h2::after{margin:18px auto 0}
+/* stats band */
+.stats{background:var(--navy);border:0}
+.stat{border-color:var(--hair)}
+.stat b{color:#fff}
+.stat span{color:#a9b8da;letter-spacing:.04em}
+/* white sections crisp */
+#linh-vuc,#san-pham{background:#fff}
+.pillar{border-color:var(--line);overflow:hidden}
+.pillar img{transition:transform .6s}
+.pillar:hover img{transform:scale(1.04)}
+.pillar:hover{border-color:var(--brand)}
+.prod{border-color:var(--line);background:var(--line)}
+.card{position:relative}
+.card::after{content:"";position:absolute;left:0;top:0;height:2px;width:0;background:var(--accent);transition:width .35s}
+.card:hover::after{width:100%}
+.card:hover{background:#f6f8fc}
+/* light sections with faded architecture photo (like hero) */
+.night.blueprint{position:relative;overflow:hidden;background:#fff;color:var(--ink)}
+.night.blueprint::before{content:"";position:absolute;inset:0;background-size:cover;background-position:right center;opacity:1;z-index:0}
+.night.blueprint::after{content:"";position:absolute;inset:0;z-index:0;background:linear-gradient(90deg,rgba(255,255,255,.98) 0%,rgba(255,255,255,.95) 45%,rgba(255,255,255,.72) 75%,rgba(255,255,255,.45) 100%),linear-gradient(rgba(10,61,168,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(10,61,168,.045) 1px,transparent 1px);background-size:100% 100%,56px 56px,56px 56px}
+#cong-nghe::before{background-image:url(img/house-4.jpg)}
+#hop-tac::before{background-image:url(img/house-2.jpg)}
+.night.blueprint > .wrap{position:relative;z-index:1}
+.night .compare{border-color:var(--line);background:#fff}
+.night .compare .late{background:#fff}
+.night .compare .late li{border-color:var(--line)}
+.night .compare .early{border-top:3px solid var(--accent)}
+.night .tabs button[aria-selected="true"]{color:var(--brand);border-color:var(--accent)}
+.night .model{background:#fff;border:1px solid var(--line);border-top:2px solid var(--brand)}
+.night .model:hover{border-top-color:var(--accent)}
+/* bedroom lighting: warm & bright */
+#anh-sang{background:linear-gradient(135deg,#fdf9f3 0%,#f6ecdf 100%);background-image:radial-gradient(ellipse at 18% 65%,rgba(242,140,60,.18),transparent 55%),linear-gradient(135deg,#fdf9f3 0%,#f6ecdf 100%)}
+#anh-sang .lead{color:#6a5d4d}
+#anh-sang .light-media{box-shadow:0 30px 70px rgba(120,70,20,.22)}
+#anh-sang .light-media figcaption{color:#8a7a66}
+#anh-sang .scenes li{border-color:#e7d9c6}
+#anh-sang .scenes li b{color:var(--brand-deep)}
+#anh-sang .scenes li small{color:#6a5d4d}
+/* segments & process sharper */
+.seg article{border-top:1px solid var(--ink);position:relative}
+.seg article::before{content:"";position:absolute;top:-1px;left:0;width:40px;height:3px;background:var(--accent)}
+.step::before{font-size:2.6rem}
+.gal img{transition:transform .5s}
+.gal img:hover{transform:scale(1.03)}
+.split .stack img.small{border-color:#fff}
+
+@media (max-width:960px){
+  .light-grid{grid-template-columns:1fr;gap:56px}
+  .nav ul{display:none}
+  .pillars,.models{grid-template-columns:1fr}
+  .prod{grid-template-columns:1fr 1fr}
+  .seg{grid-template-columns:1fr 1fr}
+  .split{grid-template-columns:1fr;gap:40px}
+  .split .stack img.small{right:0}
+  .steps{grid-template-columns:repeat(3,1fr);row-gap:36px}
+  .step::after{display:none}
+  .panel{grid-template-columns:1fr}
+  .vids{grid-template-columns:1fr}
+  .hero::after{background:linear-gradient(180deg,rgba(255,255,255,.55) 0%,rgba(255,255,255,.9) 40%,rgba(255,255,255,.98) 100%)}
+}
+@media (max-width:640px){
+  section{padding:68px 0}
+  .stats{grid-template-columns:1fr 1fr}
+  .stat:nth-child(2){border-right:0}
+  .stat:nth-child(-n+2){border-bottom:1px solid var(--line)}
+  .compare{grid-template-columns:1fr}
+  .prod,.seg,.cards3{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr 1fr}
+  .gal{grid-template-columns:1fr 1fr}
+  .brand span{display:none}
+  .tabs button{padding:12px 14px;font-size:.88rem}
+}
+@media print{
+  .nav,.no-print,video{display:none!important}
+  section{padding:40px 0;break-inside:avoid}
+  .hero{min-height:auto}
+  .panel{display:grid!important}
+  body{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top"><img src="img/logo.png" alt="STC"><span>Hồ sơ năng lực · 2026</span></a>
+    <ul>
+      <li><a href="#linh-vuc">Lĩnh vực</a></li>
+      <li><a href="#cong-nghe">Vì sao công nghệ</a></li>
+      <li><a href="#san-pham">Sản phẩm</a></li>
+      <li><a href="#anh-sang">Ánh sáng</a></li>
+      <li><a href="#hop-tac">Hợp tác</a></li>
+      <li><a href="#cong-trinh">Công trình</a></li>
+    </ul>
+    <a class="btn btn-primary btn-sm" href="#lien-he">Liên hệ</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <img src="img/house-3.jpg" alt="Biệt thự do STC lắp đặt hệ thống nhà thông minh">
+  <div class="wrap">
+    <div class="eyebrow">Đối tác công nghệ cho công trình cao cấp</div>
+    <h1>Công nghệ được <em>thiết kế cùng kiến trúc</em> — không lắp thêm sau cùng.</h1>
+    <p>STC (Công ty TNHH Đầu tư và Công nghệ STC) tư vấn, tích hợp và thi công hệ thống nhà thông minh, an toàn điện, cổng tự động và hạ tầng mạng cho biệt thự, căn hộ, nhà phố và công trình thương mại — đồng hành cùng kiến trúc sư, nhà thầu và chủ đầu tư từ bản vẽ đến vận hành.</p>
+    <div class="cta">
+      <a class="btn btn-primary" href="#lien-he">Đặt lịch trao đổi</a>
+      <a class="btn btn-line" href="#san-pham">Xem danh mục giải pháp</a>
+    </div>
+    <div class="partners">
+      <span>Đại lý ủy quyền &amp; đối tác</span>
+      <b>FPT Smart Home</b><b>OSUNO</b><b>CNC Electric</b><b>AB Gate</b><b>DEA · Italy</b>
+    </div>
+  </div>
+</header>
+
+<div class="stats">
+  <div class="stat"><b>2017</b><span>Năm thành lập</span></div>
+  <div class="stat"><b>8 năm</b><span>Thi công &amp; bảo trì hạ tầng cáp quang</span></div>
+  <div class="stat"><b>200+</b><span>Công trình nhà ở đã phục vụ</span></div>
+  <div class="stat"><b>24/7</b><span>Hỗ trợ kỹ thuật &amp; bảo trì</span></div>
+</div>
+
+<section id="linh-vuc">
+  <div class="wrap">
+    <div class="eyebrow">Ngành nghề chính</div>
+    <h2>Ba năng lực cốt lõi, một đội ngũ chịu trách nhiệm</h2>
+    <p class="lead">Từ đường cáp quang ngoài cổng đến công tắc trong phòng ngủ, STC thi công trọn tầng công nghệ của công trình — một đầu mối, một tiêu chuẩn, một cam kết bảo hành.</p>
+    <div class="pillars">
+      <article class="pillar">
+        <img src="img/interior.jpg" alt="Không gian nội thất có hệ thống chiếu sáng thông minh">
+        <div>
+          <span class="no">01</span>
+          <h3>Nhà thông minh &amp; tự động hóa</h3>
+          <p>Thiết kế, lắp đặt và lập trình hệ sinh thái FPT Smart Home: chiếu sáng, rèm, khí hậu, an ninh, khóa và cổng — điều khiển trong một ứng dụng.</p>
+          <ul><li>Kịch bản chiếu sáng theo không gian</li><li>Rèm, cổng, khóa tự động</li><li>An ninh, camera, cảm biến</li></ul>
+        </div>
+      </article>
+      <article class="pillar">
+        <img src="img/switch.jpg" alt="Công tắc cảm ứng mặt kính">
+        <div>
+          <span class="no">02</span>
+          <h3>An toàn điện &amp; thiết bị điện thông minh</h3>
+          <p>Phân phối và lắp đặt aptomat thông minh CNC Electric chống sốc điện cách ly, đo dòng và ngắt mạch từ xa trên điện thoại.</p>
+          <ul><li>Chống giật, phát hiện dòng rò</li><li>Bảo vệ quá áp, thấp áp, mất pha</li><li>Cắt sét lan truyền, giảm rủi ro cháy nổ</li></ul>
+        </div>
+      </article>
+      <article class="pillar">
+        <img src="img/cable-1.jpg" alt="Thi công tuyến cáp quang">
+        <div>
+          <span class="no">03</span>
+          <h3>Hạ tầng viễn thông &amp; cáp quang</h3>
+          <p>Thi công tuyến cáp ngầm, cáp treo; kéo cáp, hàn nối, đo kiểm, nghiệm thu; bảo trì và ứng cứu sự cố — đối tác thi công của FPT Telecom.</p>
+          <ul><li>Xây dựng hạ tầng cáp quang</li><li>Bảo trì, vận hành, ứng cứu</li><li>Hạ tầng mạng cho công trình</li></ul>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="night blueprint" id="cong-nghe">
+  <div class="wrap">
+    <div class="eyebrow">Vì sao công nghệ phải có mặt từ bản vẽ</div>
+    <h2>Một công trình sang trọng hôm nay<br>phải vận hành thông minh</h2>
+    <p class="lead">Khách hàng cao cấp không chỉ mua vật liệu và không gian — họ mua trải nghiệm sống: an toàn, tiện nghi, tiết kiệm và kiểm soát được. Công nghệ chỉ đạt được điều đó khi được tính từ giai đoạn thiết kế.</p>
+
+    <div class="compare">
+      <div class="late">
+        <h3>Lắp thêm sau khi hoàn thiện</h3>
+        <ul>
+          <li><i>✕</i>Đục tường, đi nổi dây — phá vỡ hoàn thiện nội thất</li>
+          <li><i>✕</i>Thiết bị lộ, không đồng bộ với chất liệu và màu sắc</li>
+          <li><i>✕</i>Nhiều nhà cung cấp, nhiều ứng dụng, khó bảo hành</li>
+          <li><i>✕</i>Phát sinh chi phí và kéo dài thời gian bàn giao</li>
+          <li><i>✕</i>Giới hạn tính năng do thiếu dây, thiếu vị trí lắp</li>
+        </ul>
+      </div>
+      <div class="early">
+        <h3>Tích hợp từ giai đoạn thiết kế cùng STC</h3>
+        <ul>
+          <li><i>✦</i>Đi dây âm, chờ sẵn vị trí — mặt hoàn thiện sạch, tinh tế</li>
+          <li><i>✦</i>Công tắc, khóa, rèm chọn theo ngôn ngữ thiết kế nội thất</li>
+          <li><i>✦</i>Một hệ sinh thái, một ứng dụng, một đầu mối bảo trì</li>
+          <li><i>✦</i>Dự toán rõ ràng ngay từ đầu, khớp tiến độ xây dựng</li>
+          <li><i>✦</i>Sẵn sàng mở rộng khi chủ nhà muốn nâng cấp</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="aud">
+      <div class="tabs" role="tablist">
+        <button role="tab" aria-selected="true" data-p="p1">Với chủ đầu tư</button>
+        <button role="tab" aria-selected="false" data-p="p2">Với kiến trúc &amp; nội thất</button>
+        <button role="tab" aria-selected="false" data-p="p3">Với nhà thầu xây dựng</button>
+      </div>
+      <div class="panel on" id="p1">
+        <div><b>Gia tăng giá trị sản phẩm</b><p>Căn hộ, biệt thự có sẵn hệ thống thông minh tạo điểm khác biệt rõ ràng khi chào bán và cho thuê.</p></div>
+        <div><b>Vận hành &amp; an toàn</b><p>Kiểm soát điện, an ninh, ra vào từ xa; giảm rủi ro điện và tối ưu năng lượng trong quá trình sử dụng.</p></div>
+        <div><b>Một đầu mối hậu mãi</b><p>Bảo hành theo hãng và bảo trì tận nơi — chủ đầu tư không phải xử lý khiếu nại kỹ thuật sau bàn giao.</p></div>
+      </div>
+      <div class="panel" id="p2">
+        <div><b>Bảo toàn ý đồ thiết kế</b><p>Thiết bị âm tường, mặt kính, rèm ray ẩn — công nghệ phục vụ kiến trúc, không làm nó rối mắt.</p></div>
+        <div><b>Hồ sơ kỹ thuật đi kèm</b><p>STC hỗ trợ bố trí vị trí thiết bị, sơ đồ đi dây và kịch bản ánh sáng để đưa vào bộ hồ sơ thiết kế.</p></div>
+        <div><b>Nâng tầm đề xuất cho khách</b><p>Kiến trúc sư có thêm giải pháp "sống thông minh" trọn gói để trình bày cùng phương án nội thất.</p></div>
+      </div>
+      <div class="panel" id="p3">
+        <div><b>Thi công phối hợp đúng giai đoạn</b><p>STC đi dây, chờ ống ở giai đoạn thô và lắp thiết bị ở giai đoạn hoàn thiện, khớp tiến độ tổng.</p></div>
+        <div><b>Gói thầu phụ rõ phạm vi</b><p>Hệ thống điện nhẹ, smarthome, an toàn điện, cổng tự động và mạng — bóc tách khối lượng minh bạch.</p></div>
+        <div><b>Nghiệm thu &amp; bàn giao</b><p>Đo kiểm, lập trình, hướng dẫn chủ nhà sử dụng và lập biên bản bàn giao đầy đủ.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="san-pham">
+  <div class="wrap">
+    <div class="eyebrow">Danh mục sản phẩm &amp; giải pháp</div>
+    <h2>Tiện nghi tinh tế cho từng không gian</h2>
+    <p class="lead">Thiết bị chính hãng, đồng bộ trong một hệ sinh thái — chọn theo phong cách và quy mô của từng công trình.</p>
+    <div class="prod">
+      <div class="card"><svg viewBox="0 0 24 24"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9V16h7v-2.1A6 6 0 0 0 12 3z"/></svg><h3>Chiếu sáng thông minh</h3><p>Kịch bản theo không gian và thời điểm: tiếp khách, xem phim, đi ngủ; tự bật/tắt theo cảm biến.</p><small>FPT Smart Home</small></div>
+      <div class="card"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><circle cx="9" cy="9" r="1.5"/><circle cx="15" cy="9" r="1.5"/><circle cx="9" cy="15" r="1.5"/><circle cx="15" cy="15" r="1.5"/></svg><h3>Công tắc cảm ứng mặt kính</h3><p>Thiết kế phẳng, sang trọng, hòa hợp với nội thất hiện đại và tân cổ điển.</p><small>FPT Smart Home</small></div>
+      <div class="card"><svg viewBox="0 0 24 24"><path d="M3 4h18M5 4v16M19 4v16M8 4v12M11 4v14M14 4v12M17 4v14"/></svg><h3>Rèm tự động</h3><p>Ray ẩn trần, mở/đóng bằng một chạm, theo lịch hoặc theo ánh sáng — giữ trọn ý đồ nội thất.</p><small>FPT Smart Home</small></div>
+      <div class="card"><svg viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2"/><rect x="9.5" y="5" width="5" height="5" rx="1"/><path d="M12 14v3"/></svg><h3>Khóa cửa thông minh</h3><p>Vân tay, khuôn mặt, mã số, thẻ và ứng dụng — có dòng cho cửa gỗ, cửa nhôm và cửa cổng.</p><small>OSUNO</small></div>
+      <div class="card"><svg viewBox="0 0 24 24"><path d="M3 7h13l4 3-4 3H3zM6 13v6"/><circle cx="8" cy="10" r="1"/></svg><h3>An ninh &amp; camera</h3><p>Báo động, cảm biến cửa và chuyển động, xem nhà từ xa và nhận cảnh báo tức thì qua điện thoại.</p><small>FPT Smart Home</small></div>
+      <div class="card"><svg viewBox="0 0 24 24"><path d="M12 3v18M5 7l14 10M19 7L5 17"/></svg><h3>Khí hậu &amp; cảm biến</h3><p>Điều khiển điều hòa theo nhiệt độ và lịch sinh hoạt; báo khói, tưới cây tự động.</p><small>FPT Smart Home</small></div>
+      <div class="card"><svg viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg><h3>Aptomat thông minh</h3><p>Chống sốc điện cách ly, phát hiện dòng rò, đo dòng và ngắt mạch từ xa — an toàn điện cho cả công trình.</p><small>CNC Electric</small></div>
+      <div class="card"><svg viewBox="0 0 24 24"><path d="M3 21V8l9-5 9 5v13M7 21v-9h10v9M12 12v9"/></svg><h3>Cổng tự động</h3><p>Động cơ âm sàn và cổng lùa: mở bằng remote hoặc điện thoại, cảm biến chống kẹp, mở bằng chìa khi mất điện.</p><small>AB Gate · DEA (Italy)</small></div>
+      <div class="card"><svg viewBox="0 0 24 24"><path d="M2 9a15 15 0 0 1 20 0M5 12.5a10 10 0 0 1 14 0M8.5 16a5 5 0 0 1 7 0"/><circle cx="12" cy="19.5" r="1"/></svg><h3>Hạ tầng mạng &amp; cáp quang</h3><p>Cáp quang, mạng nội bộ và wifi phủ sóng — nền tảng để mọi thiết bị thông minh vận hành ổn định.</p><small>Năng lực thi công STC</small></div>
+    </div>
+  </div>
+</section>
+
+<section id="anh-sang">
+  <div class="wrap">
+    <div class="eyebrow">Giải pháp ánh sáng thông minh</div>
+    <h2>Phòng ngủ — ánh sáng theo nhịp sinh hoạt</h2>
+    <p class="lead">Ánh sáng là lớp nội thất thứ hai. Với hệ thống chiếu sáng thông minh, một căn phòng có nhiều trạng thái: dịu nhẹ để nghỉ ngơi, ấm áp để thư giãn, đủ sáng để đọc và thay đồ — chuyển đổi bằng một chạm hoặc tự động theo giờ.</p>
+    <div class="light-grid">
+      <figure class="light-media">
+        <video id="lightVid" src="img/phong-ngu-anh-sang.mp4" poster="img/phong-ngu-anh-sang-poster.jpg" controls muted loop playsinline preload="none"></video>
+        <figcaption>Phối cảnh mô phỏng kịch bản chiếu sáng phòng ngủ — STC</figcaption>
+      </figure>
+      <div>
+        <ul class="scenes">
+          <li><span class="s1">1</span><b>Đêm khuya</b><small>Chỉ còn đèn hắt chân giường, đủ thấy lối đi mà không làm tỉnh giấc.</small></li>
+          <li><span class="s2">2</span><b>Đọc sách</b><small>Đèn đầu giường bật riêng từng bên, tập trung ánh sáng nơi cần dùng.</small></li>
+          <li><span class="s3">3</span><b>Thư giãn</b><small>Đèn hắt trần, hắt tường và tủ đồ sáng dần với ánh vàng ấm.</small></li>
+          <li><span class="s4">4</span><b>Thức dậy</b><small>Toàn bộ ánh sáng bật theo giờ hẹn, kết hợp rèm tự động mở.</small></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:#fff">
+  <div class="wrap split">
+    <div class="stack">
+      <img src="img/house-2.jpg" alt="Biệt thự có cổng tự động và hệ thống nhà thông minh">
+      <img class="small" src="img/lock-1.jpg" alt="Khóa thông minh OSUNO">
+    </div>
+    <div>
+      <div class="eyebrow">Trải nghiệm chủ nhà</div>
+      <h2>Một chạm cho cả ngôi nhà</h2>
+      <p class="lead">Tất cả thiết bị điều khiển chung trong một ứng dụng trên điện thoại — tại nhà hay ở bất cứ đâu.</p>
+      <ul class="ticks">
+        <li>Về đến cổng: cổng mở, đèn sân bật, khóa cửa nhận diện chủ nhà</li>
+        <li>Buổi tối: rèm khép, ánh sáng chuyển sang chế độ thư giãn</li>
+        <li>Đi vắng: một chạm tắt toàn bộ, bật an ninh, xem camera từ xa</li>
+        <li>Sự cố điện: aptomat tự ngắt và báo ngay về điện thoại</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section style="background:#f4f6fa;border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="eyebrow">Giải pháp theo loại công trình</div>
+    <h2>Phù hợp từng phân khúc</h2>
+    <div class="seg">
+      <article><h3>Biệt thự &amp; villa</h3><p>Trọn gói tự động hóa trong nhà và ngoài sân vườn.</p><ul><li>Cổng âm sàn tự động</li><li>Chiếu sáng cảnh quan, tưới cây</li><li>An ninh vành đai</li><li>Khóa cổng &amp; cửa chính</li></ul></article>
+      <article><h3>Căn hộ cao cấp</h3><p>Gói chuẩn hóa theo mặt bằng, dễ nhân bản cho cả dự án.</p><ul><li>Công tắc mặt kính, kịch bản</li><li>Rèm tự động</li><li>Khóa thông minh</li><li>Điều hòa &amp; cảm biến</li></ul></article>
+      <article><h3>Nhà phố &amp; shophouse</h3><p>Kết hợp ở và kinh doanh, kiểm soát từ xa.</p><ul><li>Camera &amp; báo động</li><li>Aptomat an toàn điện</li><li>Cửa cuốn / cổng tự động</li><li>Mạng &amp; wifi nhiều tầng</li></ul></article>
+      <article><h3>Văn phòng &amp; thương mại</h3><p>Vận hành tập trung, an toàn và tiết kiệm năng lượng.</p><ul><li>Chiếu sáng theo lịch</li><li>Kiểm soát ra vào</li><li>Giám sát điện năng</li><li>Hạ tầng mạng</li></ul></article>
+    </div>
+  </div>
+</section>
+
+<section class="night blueprint" id="hop-tac">
+  <div class="wrap">
+    <div class="eyebrow">Mô hình hợp tác</div>
+    <h2>Cùng tạo ra công trình đáng giá hơn</h2>
+    <p class="lead">STC linh hoạt vai trò theo từng đối tác — từ tư vấn kỹ thuật cho bản vẽ đến tổng thầu phụ phần công nghệ.</p>
+    <div class="models">
+      <div class="model">
+        <span class="tag">Kiến trúc &amp; nội thất</span>
+        <h3>Đối tác giải pháp</h3>
+        <p>Bổ sung lớp công nghệ vào phương án thiết kế mà không làm thay đổi ngôn ngữ kiến trúc.</p>
+        <ul><li>Tư vấn bố trí thiết bị theo bản vẽ</li><li>Sơ đồ đi dây, kịch bản ánh sáng</li><li>Đi khảo sát và trình bày cùng khách</li></ul>
+      </div>
+      <div class="model">
+        <span class="tag">Nhà thầu xây dựng</span>
+        <h3>Thầu phụ công nghệ</h3>
+        <p>Nhận trọn hạng mục điện nhẹ – smarthome, phối hợp theo tiến độ tổng của công trình.</p>
+        <ul><li>Bóc tách khối lượng, báo giá minh bạch</li><li>Thi công thô &amp; hoàn thiện đúng giai đoạn</li><li>Nghiệm thu, bàn giao, bảo hành</li></ul>
+      </div>
+      <div class="model">
+        <span class="tag">Chủ đầu tư</span>
+        <h3>Gói tiêu chuẩn dự án</h3>
+        <p>Chuẩn hóa gói thông minh cho từng loại sản phẩm, tạo điểm bán hàng khác biệt.</p>
+        <ul><li>Thiết kế gói theo mặt bằng điển hình</li><li>Căn mẫu / nhà mẫu trải nghiệm</li><li>Bảo trì và hỗ trợ cư dân sau bàn giao</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Quy trình làm việc</div>
+    <h2>Sáu bước, một đầu mối</h2>
+    <div class="steps">
+      <div class="step"><b>Khảo sát</b><p>Tiếp nhận bản vẽ, nhu cầu và hiện trạng công trình.</p></div>
+      <div class="step"><b>Thiết kế giải pháp</b><p>Bố trí thiết bị, sơ đồ đi dây, kịch bản vận hành.</p></div>
+      <div class="step"><b>Báo giá &amp; hợp đồng</b><p>Bóc tách khối lượng, phương án và tiến độ rõ ràng.</p></div>
+      <div class="step"><b>Thi công thô</b><p>Đi dây, chờ ống, đế âm theo tiến độ xây dựng.</p></div>
+      <div class="step"><b>Lắp đặt &amp; lập trình</b><p>Lắp thiết bị, cài đặt kịch bản, đo kiểm vận hành.</p></div>
+      <div class="step"><b>Bàn giao &amp; bảo trì</b><p>Hướng dẫn sử dụng, bảo hành theo hãng, bảo trì tận nơi.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="cong-trinh" style="padding-top:0">
+  <div class="wrap">
+    <div class="eyebrow">Công trình thực tế</div>
+    <h2>Do đội ngũ STC thi công</h2>
+    <div class="vids">
+      <figure>
+        <video src="img/nha-thong-minh.mp4" poster="img/nha-thong-minh-poster.jpg" controls muted playsinline preload="none"></video>
+        <figcaption>Nhà thông minh: chiếu sáng, rèm, điều hòa, công tắc cảm ứng, tưới cây tự động</figcaption>
+      </figure>
+      <figure>
+        <video src="img/cong-tu-dong.mp4" poster="img/cong-tu-dong-poster.jpg" controls muted playsinline preload="none"></video>
+        <figcaption>Cổng 2 cánh âm sàn tự động</figcaption>
+      </figure>
+    </div>
+    <div class="gal">
+      <img src="img/hero-house.jpg" alt="Công trình nhà ở">
+      <img src="img/house-4.jpg" alt="Nhà phố nhiều tầng">
+      <img src="img/lock-2.jpg" alt="Khóa thông minh trên cửa nhôm">
+      <img src="img/showroom.jpg" alt="Showroom FPT Smart Home – STC">
+      <img src="img/fpt-solution.jpg" alt="Hệ sinh thái giải pháp FPT Smart Home">
+      <img src="img/aptomat-cnc.jpg" alt="Aptomat thông minh CNC Electric">
+      <img src="img/signing.jpg" alt="Ký kết hợp tác">
+      <img src="img/team.jpg" alt="Đội ngũ STC">
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="lien-he">
+  <div class="wrap">
+    <div class="eyebrow">Hợp tác cùng STC</div>
+    <h2>Hãy để công nghệ trở thành một phần của thiết kế</h2>
+    <p class="lead">Gửi bản vẽ hoặc mô tả dự án — STC sẽ đề xuất phương án tích hợp và dự toán sơ bộ phù hợp với phân khúc công trình.</p>
+    <div class="cta">
+      <a class="btn btn-accent" href="tel:0917071717">Gọi 0917 07 1717</a>
+      <a class="btn btn-line" href="https://zalo.me/0917071717" target="_blank" rel="noopener">Nhắn Zalo</a>
+      <button class="btn btn-line no-print" onclick="window.print()">Lưu hồ sơ PDF</button>
+    </div>
+    <div class="cards3">
+      <div><small>Người liên hệ</small><p>Lê Quang Toàn — Giám đốc</p></div>
+      <div><small>Điện thoại · Zalo</small><p><a href="tel:0917071717">0917 07 1717</a></p></div>
+      <div><small>Email</small><p><a href="mailto:stctelecom.dlk@gmail.com">stctelecom.dlk@gmail.com</a></p></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Công ty TNHH Đầu tư và Công nghệ STC · STC CROP</span>
+    <span>Đại lý ủy quyền FPT Smart Home · OSUNO · CNC Electric</span>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.tabs button').forEach(function(b){
+  b.addEventListener('click',function(){
+    document.querySelectorAll('.tabs button').forEach(function(x){x.setAttribute('aria-selected','false')});
+    document.querySelectorAll('.panel').forEach(function(p){p.classList.remove('on')});
+    b.setAttribute('aria-selected','true');
+    document.getElementById(b.dataset.p).classList.add('on');
+  });
+});
+
+var lv=document.getElementById('lightVid');
+if(lv&&'IntersectionObserver' in window){
+  new IntersectionObserver(function(es){es.forEach(function(e){
+    if(e.isIntersecting){lv.play().catch(function(){})}else{lv.pause()}
+  })},{threshold:.4}).observe(lv);
+}
+</script>
+</body>
+</html>
